@@ -1,0 +1,16 @@
+{
+  "name": "codeit-fs-object-oriented-programming-practice",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/practice.test.js",
+    "test:01": "node --test --test-name-pattern=01 tests/practice.test.js",
+    "test:02": "node --test --test-name-pattern=02 tests/practice.test.js",
+    "test:03": "node --test --test-name-pattern=03 tests/practice.test.js",
+    "test:04": "node --test --test-name-pattern=04 tests/practice.test.js",
+    "test:05": "node --test --test-name-pattern=05 tests/practice.test.js",
+    "test:06": "node --test --test-name-pattern=06 tests/practice.test.js",
+    "patterns": "node src/07-pattern-reading/code-a.js && node src/07-pattern-reading/code-b.js && node src/07-pattern-reading/code-c.js && node src/07-pattern-reading/code-d.js"
+  }
+}
