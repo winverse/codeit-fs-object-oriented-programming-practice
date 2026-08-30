@@ -1,6 +1,6 @@
 # Object-Oriented Programming - JS Practice
 
-이 저장소는 Codeit 풀스택 15기 `30. Object-Oriented Programming - JS` 과정의 문제 해결 실습입니다.
+이 저장소는 Codeit 풀스택 15기 `31. Object-Oriented Programming - JS` 과정의 문제 해결 실습입니다.
 
 ## 시작 상태
 

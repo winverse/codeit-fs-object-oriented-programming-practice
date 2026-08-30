@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=26 <27"
+    "node": ">=24 <25"
   },
   "scripts": {
     "test": "node --test tests/practice.test.js",
