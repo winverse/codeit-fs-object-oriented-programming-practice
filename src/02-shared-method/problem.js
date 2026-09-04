@@ -1,4 +1,4 @@
-// 파일: src/02-shared-method/problem.js
+// src/02-shared-method/problem.js
 class User {
   constructor(email) {
     this.email = email;

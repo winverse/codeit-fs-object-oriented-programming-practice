@@ -1,4 +1,4 @@
-// 파일: src/06-battle/problem.js
+// src/06-battle/problem.js
 class Warrior {
   constructor({
     name,
@@ -93,8 +93,10 @@ warrior.usePotion(); // 전사 HP: 130, 전사 Potion: 0
 
 console.log(warrior.getStatus()); // 전사 | HP:130/140 MP:20 Potion:0
 console.log(mage.getStatus()); // 마법사 | HP:36/90 MP:40 Potion:0
-console.log(mage.usePotion()); // false: 포션 없음
-console.log(warrior.usePotion()); // false: 포션 없음
+// 포션이 없으므로 false를 반환합니다.
+console.log(mage.usePotion()); // false
+console.log(warrior.usePotion()); // false
 warrior.powerStrike(mage);
 warrior.powerStrike(mage);
-console.log(warrior.powerStrike(mage)); // false: MP 부족
+// MP가 부족하므로 false를 반환합니다.
+console.log(warrior.powerStrike(mage)); // false

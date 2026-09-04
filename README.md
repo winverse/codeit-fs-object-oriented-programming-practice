@@ -1,6 +1,6 @@
 # Object-Oriented Programming - JS Practice
 
-이 저장소는 Codeit 풀스택 15기 `31. Object-Oriented Programming - JS` 과정의 문제 해결 실습입니다.
+이 저장소는 객체 지향 프로그래밍 강의의 문제 해결 실습입니다.
 
 ## 시작 상태
 
@@ -14,9 +14,9 @@
 별도 패키지 설치 없이 Node.js로 실행할 수 있습니다.
 
 ```bash
-npm test
-npm run test:01
-npm run patterns
+pnpm test
+pnpm test:01
+pnpm patterns
 ```
 
 처음에는 미완성 문제 때문에 테스트가 실패합니다. 각 문제를 직접 구현하고 해당 번호의 테스트를 통과한 뒤 정답 파일과 비교합니다.

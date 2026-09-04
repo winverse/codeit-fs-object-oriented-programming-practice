@@ -1,4 +1,4 @@
-// 파일: src/01-product-label/problem.js
+// src/01-product-label/problem.js
 class Product {
   constructor(name, price) {
     // TODO

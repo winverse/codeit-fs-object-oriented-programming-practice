@@ -1,3 +1,3 @@
 # 05. 인스턴스 상태 분리하기
 
-`problem.js`에서 회원 상태와 레벨 변경 메서드를 완성합니다. `npm run test:05`가 통과하고 철수의 레벨만 증가하면 성공입니다. 구현 후 `answers/problem.js`와 비교합니다.
+`problem.js`에서 회원 상태와 레벨 변경 메서드를 완성합니다. `pnpm test:05`가 통과하고 철수의 레벨만 증가하면 성공입니다. 구현 후 `answers/problem.js`와 비교합니다.

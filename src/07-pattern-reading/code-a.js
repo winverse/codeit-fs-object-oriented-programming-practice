@@ -1,4 +1,4 @@
-// 파일: src/07-pattern-reading/code-a.js
+// src/07-pattern-reading/code-a.js
 class Logger {
   static #instance = null;
 

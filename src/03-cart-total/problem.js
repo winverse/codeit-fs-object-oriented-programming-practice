@@ -1,4 +1,4 @@
-// 파일: src/03-cart-total/problem.js
+// src/03-cart-total/problem.js
 class Cart {
   constructor() {
     // TODO

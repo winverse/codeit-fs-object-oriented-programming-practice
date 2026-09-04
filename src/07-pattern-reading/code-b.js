@@ -1,4 +1,4 @@
-// 파일: src/07-pattern-reading/code-b.js
+// src/07-pattern-reading/code-b.js
 class YouTubeChannel {
   #subscribers = [];
 

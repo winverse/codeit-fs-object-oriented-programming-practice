@@ -1,4 +1,4 @@
-// 파일: src/07-pattern-reading/code-d.js
+// src/07-pattern-reading/code-d.js
 class CardPayment {
   pay(amount) {
     console.log(`[CARD] ${amount}원 결제`);

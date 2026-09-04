@@ -1,4 +1,4 @@
-// 파일: src/07-pattern-reading/code-c.js
+// src/07-pattern-reading/code-c.js
 class EmailNotification {
   send(message) {
     console.log(`[EMAIL] ${message}`);

@@ -1,4 +1,4 @@
-// 파일: src/05-member-state/problem.js
+// src/05-member-state/problem.js
 class Member {
   constructor(name, level) {
     // TODO
