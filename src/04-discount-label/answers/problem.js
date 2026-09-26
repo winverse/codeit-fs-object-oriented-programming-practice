@@ -10,6 +10,6 @@ class Product {
   }
 }
 
-const product = new Product("자켓", 100_000);
+const product = new Product("재킷", 100_000);
 console.log(product.getPriceLabel());
 console.log(product.getPriceLabel(0.2));

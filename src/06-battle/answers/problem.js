@@ -17,14 +17,18 @@ class Warrior {
   }
 
   powerStrike(target) {
-    if (this.mp < 10) return false;
+    if (this.mp < 10) {
+      return false;
+    }
     this.mp -= 10;
     target.takeDamage(this.attackPower * 2);
     return true;
   }
 
   usePotion() {
-    if (this.potionCount === 0) return false;
+    if (this.potionCount === 0) {
+      return false;
+    }
     this.hp = Math.min(this.hp + 30, this.maxHp);
     this.potionCount -= 1;
     return true;
@@ -54,14 +58,18 @@ class Mage {
   }
 
   usePotion() {
-    if (this.potionCount === 0) return false;
+    if (this.potionCount === 0) {
+      return false;
+    }
     this.hp = Math.min(this.hp + 30, this.maxHp);
     this.potionCount -= 1;
     return true;
   }
 
   castFireball(target) {
-    if (this.mp < 20) return false;
+    if (this.mp < 20) {
+      return false;
+    }
     this.mp -= 20;
     target.takeDamage(40);
     return true;
