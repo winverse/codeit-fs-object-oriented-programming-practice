@@ -9,5 +9,5 @@ class Product {
   }
 }
 
-const product = new Product("스웨터", 30_000);
-console.log(product.getLabel());
+const p = new Product("스웨터", 30_000);
+console.log(p.getLabel());

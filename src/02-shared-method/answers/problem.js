@@ -8,7 +8,7 @@ class User {
   }
 }
 
-const user1 = new User("a@shop.com");
-const user2 = new User("b@shop.com");
-console.log(user1.buy({ name: "청바지" }));
-console.log(user1.buy === user2.buy);
+const u1 = new User("a@shop.com");
+const u2 = new User("b@shop.com");
+console.log(u1.buy({ name: "청바지" }));
+console.log(u1.buy === u2.buy);

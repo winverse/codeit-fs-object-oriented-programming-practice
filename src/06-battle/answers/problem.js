@@ -1,5 +1,11 @@
 class Warrior {
-  constructor({ name, maxHp, mp, attackPower, potionCount }) {
+  constructor({
+    name,
+    maxHp,
+    mp,
+    attackPower,
+    potionCount,
+  }) {
     this.name = name;
     this.maxHp = maxHp;
     this.hp = maxHp;
@@ -40,7 +46,13 @@ class Warrior {
 }
 
 class Mage {
-  constructor({ name, maxHp, mp, attackPower, potionCount }) {
+  constructor({
+    name,
+    maxHp,
+    mp,
+    attackPower,
+    potionCount,
+  }) {
     this.name = name;
     this.maxHp = maxHp;
     this.hp = maxHp;
@@ -95,25 +107,28 @@ const mage = new Mage({
   potionCount: 0,
 });
 
-warrior.attack(mage);
-mage.castFireball(warrior);
-warrior.powerStrike(mage);
-warrior.usePotion();
-warrior.usePotion();
+warrior.attack(mage); // 마법사 HP: 72
+mage.castFireball(warrior); // 전사 HP: 100, 마법사 MP: 40
+warrior.powerStrike(mage); // 마법사 HP: 36, 전사 MP: 20
+warrior.usePotion(); // 전사 HP: 130, 전사 Potion: 1
+warrior.usePotion(); // 전사 HP: 140, 전사 Potion: 0
 
-console.log(warrior.getStatus());
-console.log(mage.getStatus());
-console.log(mage.usePotion());
-console.log(warrior.usePotion());
+console.log(warrior.getStatus()); // 출력: 전사 | HP:140/140 MP:20 Potion:0
+console.log(mage.getStatus()); // 출력: 마법사 | HP:36/90 MP:40 Potion:0
+// 포션이 없으므로 false를 반환합니다.
+console.log(mage.usePotion()); // 출력: false
+console.log(warrior.usePotion()); // 출력: false
 
-mage.attack(warrior);
-mage.castFireball(warrior);
-mage.castFireball(warrior);
-console.log(mage.castFireball(warrior));
+mage.attack(warrior); // 전사 HP: 132
+mage.castFireball(warrior); // 전사 HP: 92, 마법사 MP: 20
+mage.castFireball(warrior); // 전사 HP: 52, 마법사 MP: 0
+// MP가 부족하므로 false를 반환합니다.
+console.log(mage.castFireball(warrior)); // 출력: false
 
-warrior.powerStrike(mage);
-warrior.powerStrike(mage);
-console.log(warrior.powerStrike(mage));
+warrior.powerStrike(mage); // 마법사 HP: 0, 전사 MP: 10
+warrior.powerStrike(mage); // 마법사 HP: 0, 전사 MP: 0
+// MP가 부족하므로 false를 반환합니다.
+console.log(warrior.powerStrike(mage)); // 출력: false
 
-console.log(warrior.getStatus());
-console.log(mage.getStatus());
+console.log(warrior.getStatus()); // 출력: 전사 | HP:52/140 MP:0 Potion:0
+console.log(mage.getStatus()); // 출력: 마법사 | HP:0/90 MP:0 Potion:0
