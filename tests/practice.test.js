@@ -45,13 +45,13 @@ test("05 인스턴스 상태", () => {
 
 test("06 전투 객체", () => {
   assert.deepEqual(run("src/06-battle/problem.js"), [
-    "전사 | HP:130/140 MP:20 Potion:0",
+    "전사 | HP:140/140 MP:20 Potion:0",
     "마법사 | HP:36/90 MP:40 Potion:0",
     "false",
     "false",
     "false",
     "false",
-    "전사 | HP:42/140 MP:0 Potion:0",
+    "전사 | HP:52/140 MP:0 Potion:0",
     "마법사 | HP:0/90 MP:0 Potion:0",
   ]);
 });

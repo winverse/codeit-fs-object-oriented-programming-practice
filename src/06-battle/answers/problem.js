@@ -85,7 +85,7 @@ const warrior = new Warrior({
   maxHp: 140,
   mp: 30,
   attackPower: 18,
-  potionCount: 1,
+  potionCount: 2,
 });
 const mage = new Mage({
   name: "마법사",
@@ -98,6 +98,7 @@ const mage = new Mage({
 warrior.attack(mage);
 mage.castFireball(warrior);
 warrior.powerStrike(mage);
+warrior.usePotion();
 warrior.usePotion();
 
 console.log(warrior.getStatus());

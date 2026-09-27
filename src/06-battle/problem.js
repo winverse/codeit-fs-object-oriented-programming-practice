@@ -76,7 +76,7 @@ const warrior = new Warrior({
   maxHp: 140,
   mp: 30,
   attackPower: 18,
-  potionCount: 1,
+  potionCount: 2,
 });
 const mage = new Mage({
   name: "마법사",
@@ -89,17 +89,18 @@ const mage = new Mage({
 warrior.attack(mage); // 마법사 HP: 72
 mage.castFireball(warrior); // 전사 HP: 100, 마법사 MP: 40
 warrior.powerStrike(mage); // 마법사 HP: 36, 전사 MP: 20
-warrior.usePotion(); // 전사 HP: 130, 전사 Potion: 0
+warrior.usePotion(); // 전사 HP: 130, 전사 Potion: 1
+warrior.usePotion(); // 전사 HP: 140, 전사 Potion: 0
 
-console.log(warrior.getStatus()); // 출력: 전사 | HP:130/140 MP:20 Potion:0
+console.log(warrior.getStatus()); // 출력: 전사 | HP:140/140 MP:20 Potion:0
 console.log(mage.getStatus()); // 출력: 마법사 | HP:36/90 MP:40 Potion:0
 // 포션이 없으므로 false를 반환합니다.
 console.log(mage.usePotion()); // 출력: false
 console.log(warrior.usePotion()); // 출력: false
 
-mage.attack(warrior); // 전사 HP: 122
-mage.castFireball(warrior); // 전사 HP: 82, 마법사 MP: 20
-mage.castFireball(warrior); // 전사 HP: 42, 마법사 MP: 0
+mage.attack(warrior); // 전사 HP: 132
+mage.castFireball(warrior); // 전사 HP: 92, 마법사 MP: 20
+mage.castFireball(warrior); // 전사 HP: 52, 마법사 MP: 0
 // MP가 부족하므로 false를 반환합니다.
 console.log(mage.castFireball(warrior)); // 출력: false
 
@@ -108,5 +109,5 @@ warrior.powerStrike(mage); // 마법사 HP: 0, 전사 MP: 0
 // MP가 부족하므로 false를 반환합니다.
 console.log(warrior.powerStrike(mage)); // 출력: false
 
-console.log(warrior.getStatus()); // 출력: 전사 | HP:42/140 MP:0 Potion:0
+console.log(warrior.getStatus()); // 출력: 전사 | HP:52/140 MP:0 Potion:0
 console.log(mage.getStatus()); // 출력: 마법사 | HP:0/90 MP:0 Potion:0
