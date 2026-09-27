@@ -1,34 +1,34 @@
 // src/07-pattern-reading/code-d.js
-class CardPayment {
-  pay(amount) {
-    console.log(`[CARD] ${amount}원 결제`);
+class StandardShipping {
+  calculate(weight) {
+    return 3_000 + weight * 500;
   }
 }
 
-class KakaoPayment {
-  pay(amount) {
-    console.log(`[KAKAO] ${amount}원 결제`);
+class ExpressShipping {
+  calculate(weight) {
+    return 6_000 + weight * 800;
   }
 }
 
-class Checkout {
-  #paymentStrategy;
+class ShippingCostCalculator {
+  #policy;
 
-  constructor(paymentStrategy) {
-    this.#paymentStrategy = paymentStrategy;
+  constructor(policy) {
+    this.#policy = policy;
   }
 
-  setPaymentStrategy(paymentStrategy) {
-    this.#paymentStrategy = paymentStrategy;
+  changePolicy(policy) {
+    this.#policy = policy;
   }
 
-  pay(amount) {
-    this.#paymentStrategy.pay(amount);
+  getCost(weight) {
+    return this.#policy.calculate(weight);
   }
 }
 
-const checkout = new Checkout(new CardPayment());
-checkout.pay(30_000); // 출력: [CARD] 30000원 결제
+const calculator = new ShippingCostCalculator(new StandardShipping());
+console.log(`[배송비] ${calculator.getCost(2)}원`); // 출력: [배송비] 4000원
 
-checkout.setPaymentStrategy(new KakaoPayment());
-checkout.pay(30_000); // 출력: [KAKAO] 30000원 결제
+calculator.changePolicy(new ExpressShipping());
+console.log(`[배송비] ${calculator.getCost(2)}원`); // 출력: [배송비] 7600원
