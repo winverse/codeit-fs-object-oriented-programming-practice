@@ -28,7 +28,7 @@ class Checkout {
 }
 
 const checkout = new Checkout(new CardPayment());
-checkout.pay(30_000);
+checkout.pay(30_000); // 출력: [CARD] 30000원 결제
 
 checkout.setPaymentStrategy(new KakaoPayment());
-checkout.pay(30_000);
+checkout.pay(30_000); // 출력: [KAKAO] 30000원 결제

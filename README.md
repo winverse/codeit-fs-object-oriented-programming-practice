@@ -26,7 +26,7 @@ pnpm patterns
 1. `src/01-product-label/problem.js`: 상태 초기화와 문자열 반환
 2. `src/02-shared-method/problem.js`: prototype 메서드 공유
 3. `src/03-cart-total/problem.js`: 배열 상태 변경과 합계 계산
-4. `src/04-discount-label/problem.js`: 기본 매개변수와 파생 값
+4. `src/04-discount-label/problem.js`: 기본 파라미터와 파생 값
 5. `src/05-member-state/problem.js`: 인스턴스 상태 분리
 6. `src/06-battle/problem.js`: 클래스별 책임과 조건 분기
 7. `src/07-pattern-reading/code-a.js`~`code-d.js`: 디자인 패턴 독해

@@ -28,5 +28,5 @@ function sendWelcome(channel, message) {
   notifier.send(message);
 }
 
-sendWelcome("email", "회원가입이 완료되었습니다.");
-sendWelcome("sms", "인증번호는 1234입니다.");
+sendWelcome("email", "회원가입이 완료되었습니다."); // 출력: [EMAIL] 회원가입이 완료되었습니다.
+sendWelcome("sms", "인증번호는 1234입니다."); // 출력: [SMS] 인증번호는 1234입니다.
