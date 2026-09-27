@@ -87,9 +87,9 @@ const mage = new Mage({
 });
 
 warrior.attack(mage); // 마법사 HP: 72
-mage.castFireball(warrior); // 전사 HP: 100, 마법사 MP: 40
-warrior.powerStrike(mage); // 마법사 HP: 36, 전사 MP: 20
-warrior.usePotion(); // 전사 HP: 130, 전사 Potion: 1
+console.log(mage.castFireball(warrior)); // 출력: true (전사 HP: 100, 마법사 MP: 40)
+console.log(warrior.powerStrike(mage)); // 출력: true (마법사 HP: 36, 전사 MP: 20)
+console.log(warrior.usePotion()); // 출력: true (전사 HP: 130, 전사 Potion: 1)
 warrior.usePotion(); // 전사 HP: 140, 전사 Potion: 0
 
 console.log(warrior.getStatus()); // 출력: 전사 | HP:140/140 MP:20 Potion:0

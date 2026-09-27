@@ -22,6 +22,7 @@ test("02 공유 메서드", () => {
   assert.deepEqual(run("src/02-shared-method/problem.js"), [
     "a@shop.com buys 청바지",
     "true",
+    "true",
   ]);
 });
 
@@ -45,6 +46,9 @@ test("05 인스턴스 상태", () => {
 
 test("06 전투 객체", () => {
   assert.deepEqual(run("src/06-battle/problem.js"), [
+    "true",
+    "true",
+    "true",
     "전사 | HP:140/140 MP:20 Potion:0",
     "마법사 | HP:36/90 MP:40 Potion:0",
     "false",
