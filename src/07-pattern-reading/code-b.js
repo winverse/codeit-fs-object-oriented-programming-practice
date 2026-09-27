@@ -41,11 +41,13 @@ channel.subscribe(user1);
 channel.subscribe(user2);
 
 channel.uploadVideo("자바스크립트 기초 강좌 1강");
+// 출력:
 // [YouTube] 영상 업로드: 자바스크립트 기초 강좌 1강
 // [김철수님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 1강
 // [이영희님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 1강
 
 channel.unsubscribe(user2);
 channel.uploadVideo("자바스크립트 기초 강좌 2강");
+// 출력:
 // [YouTube] 영상 업로드: 자바스크립트 기초 강좌 2강
 // [김철수님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 2강

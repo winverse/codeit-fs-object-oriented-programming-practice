@@ -10,5 +10,5 @@ class Product {
 }
 
 const p = new Product("재킷", 100_000);
-console.log(p.getPriceLabel()); // 재킷: 100000원
-console.log(p.getPriceLabel(0.2)); // 재킷: 80000원
+console.log(p.getPriceLabel()); // 출력: 재킷: 100000원
+console.log(p.getPriceLabel(0.2)); // 출력: 재킷: 80000원

@@ -21,4 +21,4 @@ const logger2 = Logger.getInstance();
 logger1.log("서버 시작");
 logger2.log("사용자 로그인");
 
-console.log(logger1 === logger2); // true
+console.log(logger1 === logger2); // 출력: true
