@@ -104,6 +104,15 @@ console.log(warrior.getStatus());
 console.log(mage.getStatus());
 console.log(mage.usePotion());
 console.log(warrior.usePotion());
+
+mage.attack(warrior);
+mage.castFireball(warrior);
+mage.castFireball(warrior);
+console.log(mage.castFireball(warrior));
+
 warrior.powerStrike(mage);
 warrior.powerStrike(mage);
 console.log(warrior.powerStrike(mage));
+
+console.log(warrior.getStatus());
+console.log(mage.getStatus());

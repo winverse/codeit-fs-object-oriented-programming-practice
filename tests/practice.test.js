@@ -50,5 +50,8 @@ test("06 전투 객체", () => {
     "false",
     "false",
     "false",
+    "false",
+    "전사 | HP:42/140 MP:0 Potion:0",
+    "마법사 | HP:0/90 MP:0 Potion:0",
   ]);
 });
