@@ -1,4 +1,4 @@
-// src/07-pattern-reading/code-a.js
+// src/08-pattern-reading/code-a.js
 class Logger {
   static #instance = null;
 

@@ -1,4 +1,4 @@
-// src/07-pattern-reading/code-c.js
+// src/08-pattern-reading/code-c.js
 class EmailNotification {
   send(message) {
     console.log(`[EMAIL] ${message}`);

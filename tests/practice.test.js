@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import vm from "node:vm";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 
@@ -12,6 +14,15 @@ function run(relativePath) {
   })
     .trim()
     .split("\n");
+}
+
+function loadClasses(relativePath, names) {
+  const source = readFileSync(
+    new URL(`../${relativePath}`, import.meta.url),
+    "utf8",
+  );
+  const context = vm.createContext({ console: { log() {} } });
+  return vm.runInContext(`${source}\n;({ ${names.join(", ")} });`, context);
 }
 
 test("01 상품 라벨", () => {
@@ -58,4 +69,106 @@ test("06 전투 객체", () => {
     "전사 | HP:52/140 MP:0 Potion:0",
     "마법사 | HP:0/90 MP:0 Potion:0",
   ]);
+
+  const { Warrior, Mage } = loadClasses("src/06-battle/problem.js", [
+    "Warrior",
+    "Mage",
+  ]);
+  const stats = {
+    name: "테스트",
+    maxHp: 100,
+    mp: 100,
+    attackPower: 10,
+    potionCount: 1,
+  };
+  const warrior = new Warrior(stats);
+  const mage = new Mage(stats);
+
+  assert.equal(
+    "castFireball" in warrior,
+    false,
+    "Warrior에는 castFireball을 두지 않습니다",
+  );
+  assert.equal(
+    "powerStrike" in mage,
+    false,
+    "Mage에는 powerStrike를 두지 않습니다",
+  );
+
+  for (const [attacker, skill, target, amount] of [
+    [warrior, "attack", mage, 10],
+    [warrior, "powerStrike", mage, 20],
+    [mage, "attack", warrior, 10],
+    [mage, "castFireball", warrior, 40],
+  ]) {
+    const received = [];
+    target.takeDamage = (value) => received.push(value);
+    attacker[skill](target);
+    assert.deepEqual(
+      received,
+      [amount],
+      `${skill}는 상대의 hp를 직접 바꾸지 않고 상대의 takeDamage를 호출해야 합니다`,
+    );
+  }
+});
+
+test("07 직업 상속", () => {
+  assert.deepEqual(run("src/07-job-inheritance/problem.js"), [
+    "true",
+    "true",
+    "false",
+    "true",
+    "false",
+    "도적 | HP:58/100 MP:0 Potion:0",
+    "궁수 | HP:0/95 MP:6 Potion:1",
+  ]);
+
+  const { Rogue, Archer } = loadClasses("src/07-job-inheritance/problem.js", [
+    "Rogue",
+    "Archer",
+  ]);
+
+  for (const [Job, skill, cost, amount] of [
+    [Rogue, "shadowStrike", 10, 27],
+    [Archer, "piercingArrow", 12, 35],
+  ]) {
+    const received = [];
+    const target = { takeDamage: (value) => received.push(value) };
+    const stats = {
+      name: "테스트",
+      maxHp: 100,
+      attackPower: 10,
+      potionCount: 1,
+    };
+
+    const ready = new Job({ ...stats, mp: cost });
+    assert.equal(
+      ready[skill](target),
+      true,
+      `MP가 정확히 ${cost}이면 ${skill}는 true를 반환해야 합니다`,
+    );
+    assert.equal(ready.mp, 0, `${skill}는 MP를 ${cost} 차감해야 합니다`);
+    assert.deepEqual(
+      received,
+      [amount],
+      `${skill}는 상대의 hp를 직접 바꾸지 않고 상대의 takeDamage를 호출해야 합니다`,
+    );
+
+    const tired = new Job({ ...stats, mp: cost - 1 });
+    assert.equal(
+      tired[skill](target),
+      false,
+      `MP가 ${cost} 미만이면 ${skill}는 false를 반환해야 합니다`,
+    );
+    assert.equal(
+      tired.mp,
+      cost - 1,
+      `MP가 부족하면 ${skill}는 MP를 바꾸지 않아야 합니다`,
+    );
+    assert.deepEqual(
+      received,
+      [amount],
+      `MP가 부족하면 ${skill}는 피해를 주지 않아야 합니다`,
+    );
+  }
 });

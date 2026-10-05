@@ -4,9 +4,9 @@
 
 ## 시작 상태
 
-- `src/01-*`부터 `src/06-*`까지는 서로 독립적인 클래스 구현 문제입니다.
+- `src/01-*`부터 `src/07-*`까지는 서로 독립적인 클래스 구현 문제입니다.
 - 각 `problem.js`에는 구현 위치와 해야 할 작업을 설명하는 `TODO`가 있습니다.
-- `src/07-pattern-reading`은 코드를 수정하지 않고 패턴과 근거를 분석하는 실습입니다.
+- `src/08-pattern-reading`은 코드를 수정하지 않고 패턴과 근거를 분석하는 실습입니다.
 - 정답은 각 문제의 `answers/`에 있으며 기본 테스트와 실행 명령에서는 불러오지 않습니다.
 
 ## 실행
@@ -29,4 +29,5 @@ pnpm patterns
 4. `src/04-discount-label/problem.js`: 기본 파라미터와 파생 값
 5. `src/05-member-state/problem.js`: 인스턴스 상태 분리
 6. `src/06-battle/problem.js`: 클래스별 책임과 조건 분기
-7. `src/07-pattern-reading/code-a.js`~`code-d.js`: 디자인 패턴 독해
+7. `src/07-job-inheritance/problem.js`: 상속과 자식 클래스 스킬
+8. `src/08-pattern-reading/code-a.js`~`code-d.js`: 디자인 패턴 독해

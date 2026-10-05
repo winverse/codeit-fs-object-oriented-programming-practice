@@ -1,4 +1,4 @@
-// src/07-pattern-reading/code-d.js
+// src/08-pattern-reading/code-d.js
 class StandardShipping {
   calculate(weight) {
     return 3_000 + weight * 500;

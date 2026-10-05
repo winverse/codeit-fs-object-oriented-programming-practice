@@ -1,4 +1,4 @@
-// src/07-pattern-reading/code-b.js
+// src/08-pattern-reading/code-b.js
 class YouTubeChannel {
   #subscribers = [];
 
