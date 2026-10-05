@@ -126,10 +126,34 @@ test("07 직업 상속", () => {
     "궁수 | HP:0/95 MP:6 Potion:1",
   ]);
 
-  const { Rogue, Archer } = loadClasses("src/07-job-inheritance/problem.js", [
-    "Rogue",
-    "Archer",
-  ]);
+  const { Character, Rogue, Archer } = loadClasses(
+    "src/07-job-inheritance/problem.js",
+    ["Character", "Rogue", "Archer"],
+  );
+
+  for (const [Job, skill] of [
+    [Rogue, "shadowStrike"],
+    [Archer, "piercingArrow"],
+  ]) {
+    assert.deepEqual(
+      Object.getOwnPropertyNames(Job.prototype),
+      ["constructor", skill],
+      `${Job.name}에는 ${skill}만 두고 나머지 동작은 Character에서 물려받습니다`,
+    );
+
+    const stats = {
+      name: "테스트",
+      maxHp: 100,
+      mp: 30,
+      attackPower: 10,
+      potionCount: 1,
+    };
+    assert.deepEqual(
+      { ...new Job(stats) },
+      { ...new Character(stats) },
+      `${Job.name}의 상태는 Character의 constructor가 설정해야 합니다`,
+    );
+  }
 
   for (const [Job, skill, cost, amount] of [
     [Rogue, "shadowStrike", 10, 27],
