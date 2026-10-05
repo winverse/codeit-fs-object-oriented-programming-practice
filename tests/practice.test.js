@@ -6,11 +6,14 @@ import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
+// 터미널에서 실행해도 문제 파일 출력에 색 코드가 붙지 않도록 FORCE_COLOR를 넘기지 않습니다
+const { FORCE_COLOR, ...env } = process.env;
 
 function run(relativePath) {
   return execFileSync(process.execPath, [relativePath], {
     cwd: root,
     encoding: "utf8",
+    env: { ...env, NO_COLOR: "1" },
   })
     .trim()
     .split("\n");
