@@ -107,10 +107,15 @@ test("06 전투 객체", () => {
     const received = [];
     target.takeDamage = (value) => received.push(value);
     attacker[skill](target);
-    assert.deepEqual(
-      received,
-      [amount],
+    assert.equal(
+      received.length,
+      1,
       `${skill}는 상대의 hp를 직접 바꾸지 않고 상대의 takeDamage를 호출해야 합니다`,
+    );
+    assert.equal(
+      received[0],
+      amount,
+      `${skill}의 피해량은 ${amount}이어야 합니다`,
     );
   }
 });
@@ -175,10 +180,15 @@ test("07 직업 상속", () => {
       `MP가 정확히 ${cost}이면 ${skill}는 true를 반환해야 합니다`,
     );
     assert.equal(ready.mp, 0, `${skill}는 MP를 ${cost} 차감해야 합니다`);
-    assert.deepEqual(
-      received,
-      [amount],
+    assert.equal(
+      received.length,
+      1,
       `${skill}는 상대의 hp를 직접 바꾸지 않고 상대의 takeDamage를 호출해야 합니다`,
+    );
+    assert.equal(
+      received[0],
+      amount,
+      `${skill}의 피해량은 ${amount}이어야 합니다`,
     );
 
     const tired = new Job({ ...stats, mp: cost - 1 });
