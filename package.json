@@ -22,6 +22,11 @@
     "test:12": "node --test --test-name-pattern=12 tests/practice.test.js",
     "test:13": "node --test --test-name-pattern=13 tests/practice.test.js",
     "test:14": "node --test --test-name-pattern=14 tests/practice.test.js",
-    "test:15": "node --test --test-name-pattern=15 tests/practice.test.js"
+    "test:15": "node --test --test-name-pattern=15 tests/practice.test.js",
+    "test:16": "node --test --test-name-pattern=16 tests/practice.test.js",
+    "test:17": "node --test --test-name-pattern=17 tests/practice.test.js",
+    "test:18": "node --test --test-name-pattern=18 tests/practice.test.js",
+    "test:19": "node --test --test-name-pattern=19 tests/practice.test.js",
+    "test:20": "node --test --test-name-pattern=20 tests/practice.test.js"
   }
 }

@@ -30,6 +30,34 @@ function loadDeclarations(relativePath, names) {
   return vm.runInContext(`${source}\n;({ ${names.join(", ")} });`, context);
 }
 
+// loadDeclarations와 같지만, 꺼낸 뒤에 호출한 console.log 출력을 logs 배열에 모읍니다
+function loadDeclarationsWithLogs(relativePath, names) {
+  const logs = [];
+  const source = readSource(relativePath);
+  const context = vm.createContext({
+    console: { log: (...values) => logs.push(values.join(" ")) },
+  });
+  const declarations = vm.runInContext(
+    `${source}\n;({ ${names.join(", ")} });`,
+    context,
+  );
+  // 문제 파일 끝의 실행 코드가 남긴 출력은 지웁니다
+  logs.length = 0;
+  return { ...declarations, logs };
+}
+
+// 클래스 prototype에 직접 정의한 메서드 이름을 constructor를 빼고 꺼냅니다
+function ownMethods(Class) {
+  return Object.getOwnPropertyNames(Class.prototype).filter(
+    (name) => name !== "constructor",
+  );
+}
+
+// 주석을 뺀 문제 파일 코드를 읽습니다
+function readCode(relativePath) {
+  return readSource(relativePath).replace(/\/\/.*$/gm, "");
+}
+
 // 상대의 takeDamage로 받은 피해를 확인합니다
 function checkHits(hits, method, amount) {
   assert.ok(
@@ -811,5 +839,237 @@ test("15 채널 옵저버", () => {
     "[이영희님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 1강",
     "[YouTube] 영상 업로드: 자바스크립트 기초 강좌 2강",
     "[김철수님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 2강",
+  ]);
+});
+
+test("16 학생 성적표", () => {
+  const { Student, GradeBook, ReportCardPrinter, logs } =
+    loadDeclarationsWithLogs("src/16-student-responsibility/problem.js", [
+      "Student",
+      "GradeBook",
+      "ReportCardPrinter",
+    ]);
+
+  assert.deepEqual(
+    ownMethods(Student),
+    ["getName", "getMajor"],
+    "Student에는 학생 정보를 돌려주는 getName과 getMajor만 남겨야 합니다",
+  );
+  const student = new Student("테스트", "수학과");
+  assert.deepEqual(
+    [student.getName(), student.getMajor()],
+    ["테스트", "수학과"],
+    "Student의 getName과 getMajor는 constructor로 받은 이름과 전공을 반환해야 합니다",
+  );
+
+  assert.deepEqual(
+    ownMethods(GradeBook),
+    ["addGrade", "getAverage"],
+    "GradeBook에는 성적을 기록하는 addGrade와 평균을 구하는 getAverage를 두어야 합니다",
+  );
+  const gradeBook = new GradeBook();
+  assert.deepEqual(
+    Object.keys(gradeBook),
+    [],
+    "성적 목록은 public 프로퍼티가 아니라 GradeBook의 private field에 담아야 합니다",
+  );
+  gradeBook.addGrade(2);
+  gradeBook.addGrade(3);
+  assert.equal(
+    gradeBook.getAverage(),
+    2.5,
+    "GradeBook의 getAverage는 addGrade로 기록한 성적의 평균을 반환해야 합니다",
+  );
+
+  new ReportCardPrinter().print(
+    { getName: () => "가짜 학생", getMajor: () => "가짜 학과" },
+    { getAverage: () => 3 },
+  );
+  assert.deepEqual(
+    logs,
+    ["[성적표] 가짜 학생 (가짜 학과)", "평균 학점: 3"],
+    "ReportCardPrinter의 print는 받은 student와 gradeBook의 메서드로 이름·전공·평균을 읽어 출력해야 합니다",
+  );
+
+  assert.deepEqual(run("src/16-student-responsibility/problem.js"), [
+    "[성적표] 김코드 (컴퓨터공학과)",
+    "평균 학점: 4",
+  ]);
+});
+
+test("17 메시지 알림", () => {
+  const problem = "src/17-message-open-closed/problem.js";
+  const { KakaoMessage, MessageNotificationManager, logs } =
+    loadDeclarationsWithLogs(problem, [
+      "KakaoMessage",
+      "MessageNotificationManager",
+    ]);
+
+  assert.deepEqual(
+    ownMethods(KakaoMessage),
+    ["getNotificationText"],
+    "KakaoMessage의 getShortMessage는 다른 메시지와 같은 이름의 getNotificationText로 바꿔야 합니다",
+  );
+
+  assert.doesNotMatch(
+    MessageNotificationManager.toString(),
+    /instanceof|KakaoMessage|TextMessage|InstagramMessage/,
+    "MessageNotificationManager는 메시지 종류를 확인하지 않고 모든 메시지에 같은 메서드를 호출해야 합니다",
+  );
+
+  // 문제 파일에 없는 새 메시지 종류도 고치지 않고 출력되는지 확인합니다
+  const manager = new MessageNotificationManager();
+  manager.addMessage({ getNotificationText: () => "[새 메신저] 테스트" });
+  manager.displayAll();
+  assert.deepEqual(
+    logs,
+    ["[새 메신저] 테스트"],
+    "displayAll은 getNotificationText를 가진 어떤 메시지 객체든 그 결과를 출력해야 합니다",
+  );
+
+  assert.deepEqual(run(problem), [
+    "[카카오톡] 이영희: 점심 먹었어?",
+    "[문자] 김철수: 택배가 도착했습니다",
+    "[인스타그램] 박민수: 사진을 좋아합니다",
+  ]);
+});
+
+test("18 도형 치환", () => {
+  const problem = "src/18-shape-substitution/problem.js";
+  const { Rectangle, Square, resizeToBanner } = loadDeclarations(problem, [
+    "Rectangle",
+    "Square",
+    "resizeToBanner",
+  ]);
+
+  assert.equal(
+    Square.prototype instanceof Rectangle,
+    false,
+    "Square는 Rectangle을 상속하지 않아야 합니다",
+  );
+  assert.deepEqual(
+    ownMethods(Square),
+    ["setSize", "getArea"],
+    "Square에는 한 변의 길이를 바꾸는 setSize와 넓이를 구하는 getArea만 두어야 합니다",
+  );
+
+  const square = new Square(3);
+  assert.deepEqual(
+    Object.keys(square),
+    [],
+    "한 변의 길이는 public 프로퍼티가 아니라 private field에 담아야 합니다",
+  );
+  assert.equal(
+    square.getArea(),
+    9,
+    "Square의 getArea는 constructor로 받은 한 변의 길이로 넓이를 구해야 합니다",
+  );
+  square.setSize(4);
+  assert.equal(
+    square.getArea(),
+    16,
+    "Square의 setSize로 한 변의 길이를 바꾸면 getArea도 바뀐 길이로 계산해야 합니다",
+  );
+
+  assert.equal(
+    resizeToBanner(new Rectangle(1, 1)),
+    20,
+    "Rectangle과 resizeToBanner는 고치지 않아야 합니다",
+  );
+  assert.doesNotMatch(
+    readCode(problem),
+    /resizeToBanner\(square\)/,
+    "square를 resizeToBanner에 넘기는 줄을 지워야 합니다",
+  );
+
+  assert.deepEqual(run(problem), ["20", "20", "36"]);
+});
+
+test("19 프린터 인터페이스", () => {
+  const problem = "src/19-printer-interface/problem.js";
+  const { SamsungPrinter, LgPrinter, printAll, scanAll, logs } =
+    loadDeclarationsWithLogs(problem, [
+      "SamsungPrinter",
+      "LgPrinter",
+      "printAll",
+      "scanAll",
+    ]);
+
+  assert.deepEqual(
+    ownMethods(LgPrinter),
+    ["print"],
+    "스캔 기능이 없는 LgPrinter에서는 scan 메서드를 지워야 합니다",
+  );
+  assert.deepEqual(
+    ownMethods(SamsungPrinter),
+    ["print", "scan"],
+    "SamsungPrinter의 print와 scan은 그대로 두어야 합니다",
+  );
+  assert.doesNotMatch(
+    readCode(problem),
+    /runOffice/,
+    "runOffice는 printAll과 scanAll로 나눈 뒤 지워야 합니다",
+  );
+
+  // print만 가진 객체와 scan만 가진 객체를 넘겨 확인합니다
+  printAll([{ print: (file) => logs.push(`인쇄 ${file}`) }], "a.txt");
+  scanAll([{ scan: (paper) => logs.push(`스캔 ${paper}`) }], "b.txt");
+  assert.deepEqual(
+    logs,
+    ["인쇄 a.txt", "스캔 b.txt"],
+    "printAll은 받은 객체마다 print(file)만, scanAll은 받은 객체마다 scan(paper)만 호출해야 합니다",
+  );
+
+  assert.deepEqual(run(problem), [
+    "[삼성] 회의록.docx 인쇄",
+    "[LG] 회의록.docx 인쇄",
+    "[삼성] 영수증 스캔",
+  ]);
+});
+
+test("20 보고서 변환기", () => {
+  const problem = "src/20-exporter-inversion/problem.js";
+  const { Report, MarkdownExporter, HtmlExporter, ExportController, logs } =
+    loadDeclarationsWithLogs(problem, [
+      "Report",
+      "MarkdownExporter",
+      "HtmlExporter",
+      "ExportController",
+    ]);
+
+  for (const Exporter of [MarkdownExporter, HtmlExporter]) {
+    assert.deepEqual(
+      ownMethods(Exporter),
+      ["convert"],
+      `${Exporter.name}의 변환 메서드는 같은 이름의 convert로 바꿔야 합니다`,
+    );
+  }
+
+  assert.doesNotMatch(
+    ExportController.toString(),
+    /MarkdownExporter|HtmlExporter|toMarkdown|toHtml/,
+    "ExportController에는 변환기 클래스 이름이나 변환기마다 다른 메서드 이름이 남지 않아야 합니다",
+  );
+
+  // 문제 파일에 없는 변환기를 넘겨도 그 convert 결과를 출력하는지 확인합니다
+  const controller = new ExportController({
+    convert: (report) => `[가짜] ${report.getTitle()}`,
+  });
+  assert.deepEqual(
+    Object.keys(controller),
+    [],
+    "변환기는 public 프로퍼티가 아니라 private field에 담아야 합니다",
+  );
+  controller.run(new Report("제목", "본문"));
+  assert.deepEqual(
+    logs,
+    ["[가짜] 제목"],
+    "ExportController의 run은 constructor로 받은 변환기의 convert(report) 결과를 출력해야 합니다",
+  );
+
+  assert.deepEqual(run(problem), [
+    "# 3분기 매출",
+    "매출이 10% 늘었습니다.",
+    "<h1>3분기 매출</h1><p>매출이 10% 늘었습니다.</p>",
   ]);
 });
