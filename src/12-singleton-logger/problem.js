@@ -1,6 +1,6 @@
 // src/12-singleton-logger/problem.js
 class Logger {
-  // TODO: 하나뿐인 인스턴스를 담을 static private field
+  // TODO: 하나뿐인 인스턴스를 담을 static과 #이 함께 붙은 필드
 
   constructor() {
     // TODO: 이미 인스턴스가 있으면 오류 던지기

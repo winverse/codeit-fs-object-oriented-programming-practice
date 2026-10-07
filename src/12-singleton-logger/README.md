@@ -6,7 +6,7 @@
 
 애플리케이션 전체에서 로그를 남기는 `Logger` 객체 하나를 재사용하려고 합니다. `problem.js`의 `Logger`를 싱글턴으로 완성합니다.
 
-1. 하나뿐인 인스턴스를 담을 static private field `#instance`를 `null`로 선언합니다.
+1. 하나뿐인 인스턴스를 담을 `static`과 `#`이 함께 붙은 필드 `#instance`를 `null`로 선언합니다.
 2. constructor는 `#instance`가 이미 있으면 `이미 인스턴스가 존재합니다. getInstance()를 사용하십시오.` 오류를 던지고, 없으면 생성 메시지를 출력한 뒤 방금 만든 인스턴스를 `#instance`에 저장합니다.
 3. `getInstance()`는 `#instance`가 없을 때만 새로 만들고, 저장해 둔 인스턴스를 반환합니다.
 

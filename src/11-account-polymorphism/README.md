@@ -4,7 +4,7 @@
 
 ## 할 일
 
-`problem.js`의 세 계좌는 이체하는 메서드 이름이 서로 다릅니다. `BankAccount`는 `transfer`(수수료 없음), `SavingsAccount`는 `give`(수수료 0.5%), `DonationAccount`는 `send`(수수료 0.2%)입니다. 그래서 Tom, Jerry, Kate, Alice가 공동 계좌 `vacation`으로 800000원씩 보내는 코드를 계좌마다 한 줄씩 따로 적었습니다.
+`problem.js`의 세 계좌 클래스는 이체하는 메서드 이름이 서로 다릅니다. `BankAccount`는 `transfer`(수수료 없음), `SavingsAccount`는 `give`(수수료 0.5%), `DonationAccount`는 `send`(수수료 0.2%)입니다. 그래서 Tom, Jerry, Kate, Alice가 공동 계좌 `vacation`으로 800000원씩 보내는 코드를 계좌마다 한 줄씩 따로 적었습니다.
 
 1. `give`와 `send`를 부모의 `transfer`를 오버라이딩하는 `transfer`로 바꿉니다. 자식의 `transfer`는 수수료만 처리하고, 실제 이체는 `super.transfer()`로 부모 메서드에 맡깁니다.
 2. 잔액이 보낸 금액과 수수료를 합한 것보다 적으면 수수료도 빼지 않고 `Insufficient balance`를 출력합니다.

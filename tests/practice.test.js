@@ -661,7 +661,7 @@ test("12 싱글턴 로거", () => {
       (name) => !["length", "name", "prototype"].includes(name),
     ),
     ["getInstance"],
-    "인스턴스는 클래스 밖에서 읽거나 바꿀 수 없게 static private field에 담고, static 메서드는 getInstance만 둡니다",
+    "인스턴스는 클래스 밖에서 읽거나 바꿀 수 없게 static과 #이 함께 붙은 필드에 담고, static 메서드는 getInstance만 둡니다",
   );
 
   const logger1 = Logger.getInstance();
