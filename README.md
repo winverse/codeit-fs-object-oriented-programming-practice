@@ -32,7 +32,7 @@ node src/01-product-label/problem.js
 | `src/05-discount-label` | 객체와 클래스 | 클래스 퀴즈 뒤 | 기본 파라미터와 파생 값 |
 | `src/06-battle` | 객체와 클래스 | 클래스 퀴즈 뒤 | 클래스별 책임과 조건 분기 |
 | `src/07-account-naming` | 객체 지향 프로그래밍의 핵심 개념 | 추상화 퀴즈 뒤 | 책임을 드러내는 이름 짓기 |
-| `src/08-account-encapsulation` | 객체 지향 프로그래밍의 핵심 개념 | 클로저로 구현한 캡슐화 퀴즈 뒤 | private field와 메서드로 잔액 보호하기 |
+| `src/08-account-encapsulation` | 객체 지향 프로그래밍의 핵심 개념 | 캡슐화 퀴즈 뒤 | private field와 메서드로 잔액 보호하기 |
 | `src/09-job-inheritance` | 객체 지향 프로그래밍의 핵심 개념 | 상속 퀴즈 뒤 | 상속과 자식 클래스 스킬 |
 | `src/10-account-inheritance` | 객체 지향 프로그래밍의 핵심 개념 | super 퀴즈 뒤 | `super()`로 계좌 종류 추가하기 |
 | `src/11-account-polymorphism` | 객체 지향 프로그래밍의 핵심 개념 | 부모 클래스 메서드 재사용 퀴즈 뒤 | 오버라이딩과 `super.transfer()`로 이체 코드 줄이기 |
