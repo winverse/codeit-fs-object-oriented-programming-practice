@@ -1,13 +1,9 @@
-class Product {
-  constructor(name, price) {
-    this.name = name;
-    this.price = price;
-  }
-
+const product = {
+  name: "스웨터",
+  price: 30_000,
   getLabel() {
     return `${this.name}(${this.price}원)`;
-  }
-}
+  },
+};
 
-const p = new Product("스웨터", 30_000);
-console.log(p.getLabel());
+console.log(product.getLabel()); // 출력: 스웨터(30000원)

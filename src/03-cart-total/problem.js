@@ -1,19 +1,15 @@
 // src/03-cart-total/problem.js
-class Cart {
-  constructor() {
+function Cart() {
+  // TODO: items 프로퍼티
+  this.addItem = function (item) {
     // TODO
-  }
-
-  addItem(item) {
+  };
+  this.getTotalPrice = function () {
     // TODO
-  }
-
-  getTotalPrice() {
-    // TODO
-  }
+  };
 }
 
 const cart = new Cart();
 cart.addItem({ name: "스웨터", price: 30_000 });
 cart.addItem({ name: "청바지", price: 50_000 });
-console.log(cart.getTotalPrice());
+console.log(cart.getTotalPrice()); // 출력: 80000

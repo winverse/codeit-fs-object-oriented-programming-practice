@@ -15,6 +15,13 @@
     "test:05": "node --test --test-name-pattern=05 tests/practice.test.js",
     "test:06": "node --test --test-name-pattern=06 tests/practice.test.js",
     "test:07": "node --test --test-name-pattern=07 tests/practice.test.js",
-    "patterns": "node src/08-pattern-reading/code-a.js && node src/08-pattern-reading/code-b.js && node src/08-pattern-reading/code-c.js && node src/08-pattern-reading/code-d.js"
+    "test:08": "node --test --test-name-pattern=08 tests/practice.test.js",
+    "test:09": "node --test --test-name-pattern=09 tests/practice.test.js",
+    "test:10": "node --test --test-name-pattern=10 tests/practice.test.js",
+    "test:11": "node --test --test-name-pattern=11 tests/practice.test.js",
+    "test:12": "node --test --test-name-pattern=12 tests/practice.test.js",
+    "test:13": "node --test --test-name-pattern=13 tests/practice.test.js",
+    "test:14": "node --test --test-name-pattern=14 tests/practice.test.js",
+    "test:15": "node --test --test-name-pattern=15 tests/practice.test.js"
   }
 }

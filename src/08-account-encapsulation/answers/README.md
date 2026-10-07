@@ -1,0 +1,3 @@
+# 08. 계좌 잔액 캡슐화하기 해설
+
+잔액을 private field `#balance`에 두면 클래스 밖에서는 `#balance`를 직접 읽거나 바꿀 수 없고, `getBalance()`와 `setBalance()`를 거쳐야만 잔액에 닿을 수 있습니다. `setBalance()`는 0 이상인 값만 `#balance`에 저장하고 음수면 `throw new Error("You cannot set negative number for balance")`로 거부하므로, 잔액을 음수로 만드는 호출은 어디서 하든 같은 검증에 걸립니다. constructor도 `setBalance()`로 처음 잔액을 저장하므로 처음 전달한 값에도 같은 검증이 적용됩니다. `deposit()`, `withdraw()`, `transfer()`도 `getBalance()`와 `setBalance()`로 잔액을 읽고 바꾸며, `transfer()`는 상대 계좌의 잔액을 직접 바꾸지 않고 상대 계좌의 `deposit()`을 호출해 입금을 그 계좌에 맡깁니다. 거부된 `tom.setBalance(-5_000)`은 `try...catch`가 받아 오류 메시지를 출력하고, 잔액은 30000 그대로 남습니다.

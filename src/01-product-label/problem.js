@@ -1,13 +1,10 @@
 // src/01-product-label/problem.js
-class Product {
-  constructor(name, price) {
-    // TODO
-  }
-
+const product = {
+  name: "스웨터",
+  price: 30_000,
   getLabel() {
     // TODO
-  }
-}
+  },
+};
 
-const p = new Product("스웨터", 30_000);
-console.log(p.getLabel());
+console.log(product.getLabel()); // 출력: 스웨터(30000원)
