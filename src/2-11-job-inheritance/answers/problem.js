@@ -73,12 +73,12 @@ const archer = new Archer({
   potionCount: 1,
 });
 
-console.log(rogue.shadowStrike(archer)); // 출력: true (궁수 HP: 60, 도적 MP: 30)
-console.log(archer.piercingArrow(rogue)); // 출력: true (도적 HP: 64, 궁수 MP: 18)
+console.log(rogue.shadowStrike(archer)); // 출력: true
+console.log(archer.piercingArrow(rogue)); // 출력: true
 archer.piercingArrow(rogue); // 도적 HP: 28, 궁수 MP: 6
 // MP가 부족하므로 false를 반환합니다.
 console.log(archer.piercingArrow(rogue)); // 출력: false
-console.log(rogue.usePotion()); // 출력: true (도적 HP: 58, 도적 Potion: 0)
+console.log(rogue.usePotion()); // 출력: true
 
 rogue.shadowStrike(archer); // 궁수 HP: 25, 도적 MP: 20
 rogue.shadowStrike(archer); // 궁수 HP: 0, 도적 MP: 10
