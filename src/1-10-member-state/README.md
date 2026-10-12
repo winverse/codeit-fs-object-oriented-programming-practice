@@ -4,7 +4,7 @@
 
 ## 할 일
 
-`problem.js`의 팩토리 함수 `createMember(name, level)`을 완성합니다. 반환할 객체에 `name`과 `level`을 프로퍼티 축약 표기로 넣고, `levelUp()`은 `this`로 자신의 `level`을 1 올리며, `getInfo()`는 `철수 - Lv.2` 형식의 문자열을 반환합니다.
+`problem.js`의 팩토리 함수 `createMember(name, level)`을 완성합니다. 반환할 객체에 `name`과 `level`을 프로퍼티로 넣고, `levelUp()`은 `this`로 자신의 `level`을 1 올리며, `getInfo()`는 `철수 - Lv.2` 형식의 문자열을 반환합니다.
 
 ## 실행과 테스트
 
