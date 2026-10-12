@@ -159,8 +159,8 @@ function checkTransferFee(BankAccount, createAccount, fee) {
   );
 }
 
-test("01 상품 라벨", () => {
-  const { product } = loadDeclarations("src/01-product-label/problem.js", [
+test("1-07 상품 라벨", () => {
+  const { product } = loadDeclarations("src/1-07-product-label/problem.js", [
     "product",
   ]);
   const jeans = {
@@ -174,13 +174,16 @@ test("01 상품 라벨", () => {
     "getLabel 메서드는 product 변수 이름이나 정해 둔 값 대신 this로 호출한 객체의 name과 price를 읽어야 합니다",
   );
 
-  assert.deepEqual(run("src/01-product-label/problem.js"), ["스웨터(30000원)"]);
+  assert.deepEqual(run("src/1-07-product-label/problem.js"), [
+    "스웨터(30000원)",
+  ]);
 });
 
-test("02 회원 상태", () => {
-  const { createMember } = loadDeclarations("src/02-member-state/problem.js", [
-    "createMember",
-  ]);
+test("1-10 회원 상태", () => {
+  const { createMember } = loadDeclarations(
+    "src/1-10-member-state/problem.js",
+    ["createMember"],
+  );
   const member = createMember("테스트", 1);
   const other = createMember("비교", 5);
   assert.deepEqual(
@@ -206,14 +209,14 @@ test("02 회원 상태", () => {
     "getInfo 메서드는 this로 호출한 객체의 name과 level로 문자열을 만들어야 합니다",
   );
 
-  assert.deepEqual(run("src/02-member-state/problem.js"), [
+  assert.deepEqual(run("src/1-10-member-state/problem.js"), [
     "철수 - Lv.2",
     "영희 - Lv.3",
   ]);
 });
 
-test("03 장바구니 합계", () => {
-  const { Cart } = loadDeclarations("src/03-cart-total/problem.js", ["Cart"]);
+test("1-13 장바구니 합계", () => {
+  const { Cart } = loadDeclarations("src/1-13-cart-total/problem.js", ["Cart"]);
   assert.equal(
     new Cart().getTotalPrice(),
     0,
@@ -243,26 +246,26 @@ test("03 장바구니 합계", () => {
     "getTotalPrice 메서드는 items에 담긴 상품 가격의 합을 반환해야 합니다",
   );
 
-  assert.deepEqual(run("src/03-cart-total/problem.js"), ["80000"]);
+  assert.deepEqual(run("src/1-13-cart-total/problem.js"), ["80000"]);
 });
 
-test("04 공유 메서드", () => {
-  assert.deepEqual(run("src/04-shared-method/problem.js"), [
+test("1-16-1 공유 메서드", () => {
+  assert.deepEqual(run("src/1-16-1-shared-method/problem.js"), [
     "a@shop.com buys 청바지",
     "true",
     "true",
   ]);
 });
 
-test("05 할인 가격 라벨", () => {
-  assert.deepEqual(run("src/05-discount-label/problem.js"), [
+test("1-16-2 할인 가격 라벨", () => {
+  assert.deepEqual(run("src/1-16-2-discount-label/problem.js"), [
     "재킷: 100000원",
     "재킷: 80000원",
   ]);
 });
 
-test("06 전투 객체", () => {
-  assert.deepEqual(run("src/06-battle/problem.js"), [
+test("1-16-3 전투 객체", () => {
+  assert.deepEqual(run("src/1-16-3-battle/problem.js"), [
     "true",
     "true",
     "true",
@@ -276,7 +279,7 @@ test("06 전투 객체", () => {
     "마법사 | HP:0/90 MP:0 Potion:0",
   ]);
 
-  const { Warrior, Mage } = loadDeclarations("src/06-battle/problem.js", [
+  const { Warrior, Mage } = loadDeclarations("src/1-16-3-battle/problem.js", [
     "Warrior",
     "Mage",
   ]);
@@ -353,10 +356,11 @@ test("06 전투 객체", () => {
   checkSkill(Mage, "castFireball", 20, 40);
 });
 
-test("07 계좌 이름", () => {
-  const { BankAccount } = loadDeclarations("src/07-account-naming/problem.js", [
-    "BankAccount",
-  ]);
+test("2-05 계좌 이름", () => {
+  const { BankAccount } = loadDeclarations(
+    "src/2-05-account-naming/problem.js",
+    ["BankAccount"],
+  );
   assert.deepEqual(
     Object.keys(new BankAccount("테스트", 1_000)).sort(),
     ["balance", "holder"],
@@ -399,16 +403,16 @@ test("07 계좌 이름", () => {
     "transfer는 내 잔액을 줄이고 상대 계좌의 잔액을 늘리는 메서드여야 합니다",
   );
 
-  assert.deepEqual(run("src/07-account-naming/problem.js"), [
+  assert.deepEqual(run("src/2-05-account-naming/problem.js"), [
     "Insufficient balance",
     "Tom: 30000",
     "Jerry: 70000",
   ]);
 });
 
-test("08 계좌 캡슐화", () => {
+test("2-08 계좌 캡슐화", () => {
   const { BankAccount } = loadDeclarations(
-    "src/08-account-encapsulation/problem.js",
+    "src/2-08-account-encapsulation/problem.js",
     ["BankAccount"],
   );
   const negativeError = {
@@ -488,7 +492,7 @@ test("08 계좌 캡슐화", () => {
     "transfer 메서드는 보낸 금액만큼 내 잔액을 줄여야 합니다",
   );
 
-  assert.deepEqual(run("src/08-account-encapsulation/problem.js"), [
+  assert.deepEqual(run("src/2-08-account-encapsulation/problem.js"), [
     "Insufficient balance",
     "30000",
     "70000",
@@ -497,8 +501,8 @@ test("08 계좌 캡슐화", () => {
   ]);
 });
 
-test("09 직업 상속", () => {
-  assert.deepEqual(run("src/09-job-inheritance/problem.js"), [
+test("2-11 직업 상속", () => {
+  assert.deepEqual(run("src/2-11-job-inheritance/problem.js"), [
     "true",
     "true",
     "false",
@@ -509,7 +513,7 @@ test("09 직업 상속", () => {
   ]);
 
   const { Character, Rogue, Archer } = loadDeclarations(
-    "src/09-job-inheritance/problem.js",
+    "src/2-11-job-inheritance/problem.js",
     ["Character", "Rogue", "Archer"],
   );
 
@@ -541,9 +545,9 @@ test("09 직업 상속", () => {
   checkSkill(Archer, "piercingArrow", 12, 35);
 });
 
-test("10 계좌 상속", () => {
+test("2-14 계좌 상속", () => {
   const { BankAccount, SavingsAccount, DonationAccount } = loadDeclarations(
-    "src/10-account-inheritance/problem.js",
+    "src/2-14-account-inheritance/problem.js",
     ["BankAccount", "SavingsAccount", "DonationAccount"],
   );
 
@@ -613,7 +617,7 @@ test("10 계좌 상속", () => {
     );
   }
 
-  assert.deepEqual(run("src/10-account-inheritance/problem.js"), [
+  assert.deepEqual(run("src/2-14-account-inheritance/problem.js"), [
     "100000",
     "120000",
     "180000",
@@ -622,9 +626,9 @@ test("10 계좌 상속", () => {
   ]);
 });
 
-test("11 계좌 다형성", () => {
+test("2-21 계좌 다형성", () => {
   const { BankAccount, SavingsAccount, DonationAccount } = loadDeclarations(
-    "src/11-account-polymorphism/problem.js",
+    "src/2-21-account-polymorphism/problem.js",
     ["BankAccount", "SavingsAccount", "DonationAccount"],
   );
 
@@ -645,7 +649,7 @@ test("11 계좌 다형성", () => {
   }
 
   // 주석은 빼고 호출부의 코드만 확인합니다
-  const code = readSource("src/11-account-polymorphism/problem.js").replace(
+  const code = readSource("src/2-21-account-polymorphism/problem.js").replace(
     /\/\/.*$/gm,
     "",
   );
@@ -671,7 +675,7 @@ test("11 계좌 다형성", () => {
     4,
   );
 
-  assert.deepEqual(run("src/11-account-polymorphism/problem.js"), [
+  assert.deepEqual(run("src/2-21-account-polymorphism/problem.js"), [
     "200000",
     "196000",
     "198400",
@@ -680,8 +684,8 @@ test("11 계좌 다형성", () => {
   ]);
 });
 
-test("12 싱글턴 로거", () => {
-  const { Logger } = loadDeclarations("src/12-singleton-logger/problem.js", [
+test("3-04 싱글턴 로거", () => {
+  const { Logger } = loadDeclarations("src/3-04-singleton-logger/problem.js", [
     "Logger",
   ]);
   assert.deepEqual(
@@ -713,7 +717,7 @@ test("12 싱글턴 로거", () => {
     "막힌 new Logger() 호출 뒤에도 getInstance 메서드는 처음 인스턴스를 반환해야 합니다",
   );
 
-  assert.deepEqual(run("src/12-singleton-logger/problem.js"), [
+  assert.deepEqual(run("src/3-04-singleton-logger/problem.js"), [
     "Logger 생성",
     "[LOG] 서버 시작",
     "[LOG] 사용자 로그인",
@@ -722,9 +726,9 @@ test("12 싱글턴 로거", () => {
   ]);
 });
 
-test("13 알림 팩토리", () => {
+test("3-07 알림 팩토리", () => {
   const { NotificationFactory, EmailNotification, SmsNotification } =
-    loadDeclarations("src/13-notification-factory/problem.js", [
+    loadDeclarations("src/3-07-notification-factory/problem.js", [
       "NotificationFactory",
       "EmailNotification",
       "SmsNotification",
@@ -750,16 +754,16 @@ test("13 알림 팩토리", () => {
     "등록되지 않은 채널이면 create 메서드는 오류를 던져야 합니다",
   );
 
-  assert.deepEqual(run("src/13-notification-factory/problem.js"), [
+  assert.deepEqual(run("src/3-07-notification-factory/problem.js"), [
     "[EMAIL] 회원가입이 완료되었습니다.",
     "[SMS] 인증번호는 1234입니다.",
     "지원하지 않는 채널입니다: push",
   ]);
 });
 
-test("14 배송비 전략", () => {
+test("3-10 배송비 전략", () => {
   const { ShippingCostCalculator } = loadDeclarations(
-    "src/14-shipping-strategy/problem.js",
+    "src/3-10-shipping-strategy/problem.js",
     ["ShippingCostCalculator"],
   );
 
@@ -783,15 +787,15 @@ test("14 배송비 전략", () => {
     "setShippingStrategy 메서드로 전략을 바꾸면 getCost 메서드가 새 전략으로 계산해야 합니다",
   );
 
-  assert.deepEqual(run("src/14-shipping-strategy/problem.js"), [
+  assert.deepEqual(run("src/3-10-shipping-strategy/problem.js"), [
     "[배송비] 4000원",
     "[배송비] 7600원",
   ]);
 });
 
-test("15 채널 옵저버", () => {
+test("3-13 채널 옵저버", () => {
   const { YouTubeChannel } = loadDeclarations(
-    "src/15-channel-observer/problem.js",
+    "src/3-13-channel-observer/problem.js",
     ["YouTubeChannel"],
   );
 
@@ -833,7 +837,7 @@ test("15 채널 옵저버", () => {
     "해지하지 않은 구독자에게는 계속 알려야 합니다",
   );
 
-  assert.deepEqual(run("src/15-channel-observer/problem.js"), [
+  assert.deepEqual(run("src/3-13-channel-observer/problem.js"), [
     "[YouTube] 영상 업로드: 자바스크립트 기초 강좌 1강",
     "[김철수님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 1강",
     "[이영희님의 알림창] 새 영상이 올라왔습니다: 자바스크립트 기초 강좌 1강",
@@ -842,9 +846,9 @@ test("15 채널 옵저버", () => {
   ]);
 });
 
-test("16 학생 성적표", () => {
+test("4-04 학생 성적표", () => {
   const { Student, GradeBook, ReportCardPrinter, logs } =
-    loadDeclarationsWithLogs("src/16-student-responsibility/problem.js", [
+    loadDeclarationsWithLogs("src/4-04-student-responsibility/problem.js", [
       "Student",
       "GradeBook",
       "ReportCardPrinter",
@@ -891,14 +895,14 @@ test("16 학생 성적표", () => {
     "ReportCardPrinter의 print는 받은 student와 gradeBook의 메서드로 이름·전공·평균을 읽어 출력해야 합니다",
   );
 
-  assert.deepEqual(run("src/16-student-responsibility/problem.js"), [
+  assert.deepEqual(run("src/4-04-student-responsibility/problem.js"), [
     "[성적표] 김코드 (컴퓨터공학과)",
     "평균 학점: 4",
   ]);
 });
 
-test("17 메시지 알림", () => {
-  const problem = "src/17-message-open-closed/problem.js";
+test("4-07 메시지 알림", () => {
+  const problem = "src/4-07-message-open-closed/problem.js";
   const { KakaoMessage, MessageNotificationManager, logs } =
     loadDeclarationsWithLogs(problem, [
       "KakaoMessage",
@@ -934,8 +938,8 @@ test("17 메시지 알림", () => {
   ]);
 });
 
-test("18 도형 치환", () => {
-  const problem = "src/18-shape-substitution/problem.js";
+test("4-10 도형 치환", () => {
+  const problem = "src/4-10-shape-substitution/problem.js";
   const { Rectangle, Square, resizeToBanner } = loadDeclarations(problem, [
     "Rectangle",
     "Square",
@@ -985,8 +989,8 @@ test("18 도형 치환", () => {
   assert.deepEqual(run(problem), ["20", "20", "36"]);
 });
 
-test("19 프린터 인터페이스", () => {
-  const problem = "src/19-printer-interface/problem.js";
+test("4-13 프린터 인터페이스", () => {
+  const problem = "src/4-13-printer-interface/problem.js";
   const { SamsungPrinter, LgPrinter, printAll, scanAll, logs } =
     loadDeclarationsWithLogs(problem, [
       "SamsungPrinter",
@@ -1027,8 +1031,8 @@ test("19 프린터 인터페이스", () => {
   ]);
 });
 
-test("20 보고서 변환기", () => {
-  const problem = "src/20-exporter-inversion/problem.js";
+test("4-16 보고서 변환기", () => {
+  const problem = "src/4-16-exporter-inversion/problem.js";
   const { Report, MarkdownExporter, HtmlExporter, ExportController, logs } =
     loadDeclarationsWithLogs(problem, [
       "Report",
