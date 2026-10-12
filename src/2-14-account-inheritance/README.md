@@ -4,7 +4,7 @@
 
 ## 할 일
 
-`problem.js` 위쪽의 `BankAccount`는 2-08 문제의 정답이며 수정하지 않습니다. 이 클래스를 상속한 두 계좌를 완성합니다.
+`problem.js` 위쪽의 `BankAccount`는 문제 2-08의 정답이며 수정하지 않습니다. 이 클래스를 상속한 두 계좌를 완성합니다.
 
 1. 저축 계좌 `SavingsAccount`: constructor에서 부모 constructor를 호출한 뒤 보유 기간 `years`를 0으로 설정합니다. `addInterest(rate)`는 잔액을 `잔액 * (1 + rate * years)`로 바꿉니다.
 2. 기부 계좌 `DonationAccount`: constructor에서 부모 constructor를 호출한 뒤 기부 비율 `rate`를 설정합니다. `donate()`는 잔액을 `잔액 * (1 - rate)`로 바꿉니다.
