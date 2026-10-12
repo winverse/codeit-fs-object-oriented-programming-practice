@@ -1,17 +1,19 @@
 // src/3-04-singleton-logger/problem.js
 class Logger {
   // TODO: 하나뿐인 인스턴스를 담을 static과 #이 함께 붙은 필드
+  // #instance를 null로 선언
 
   constructor() {
-    // TODO: 이미 인스턴스가 있으면 오류 던지기
+    // TODO: #instance가 이미 있으면
+    // "이미 인스턴스가 존재합니다. getInstance()를 사용하십시오." 오류 던지기
 
     console.log("Logger 생성");
 
-    // TODO: 방금 만든 인스턴스 저장
+    // TODO: 방금 만든 인스턴스를 #instance에 저장
   }
 
   static getInstance() {
-    // TODO: 인스턴스가 없을 때만 새로 만들고, 저장해 둔 인스턴스 반환
+    // TODO: #instance가 없을 때만 새로 만들고, 저장해 둔 인스턴스 반환
   }
 
   log(message) {

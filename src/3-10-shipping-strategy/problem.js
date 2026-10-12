@@ -12,18 +12,18 @@ class ExpressShipping {
 }
 
 class ShippingCostCalculator {
-  // TODO: 배송비 계산 전략을 담을 private field
+  // TODO: 배송비 계산 전략을 담을 private field #shippingStrategy 선언
 
   constructor(shippingStrategy) {
-    // TODO
+    // TODO: 받은 shippingStrategy를 #shippingStrategy에 저장
   }
 
   setShippingStrategy(shippingStrategy) {
-    // TODO
+    // TODO: #shippingStrategy를 받은 shippingStrategy로 바꾸기
   }
 
   getCost(weight) {
-    // TODO: 배송비 계산을 전략 객체에 맡기기
+    // TODO: 배송비 계산을 전략 객체의 calculate(weight)에 맡겨 그 결과 반환
   }
 }
 

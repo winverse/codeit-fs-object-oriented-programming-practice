@@ -1,22 +1,22 @@
 // src/3-13-channel-observer/problem.js
 class YouTubeChannel {
-  // TODO: 구독자 목록을 담을 private field
+  // TODO: 구독자 목록을 담을 private field #subscribers 선언
 
   constructor() {
-    // TODO
+    // TODO: #subscribers를 빈 배열로 초기화
   }
 
   subscribe(subscriber) {
-    // TODO
+    // TODO: #subscribers에 subscriber 추가
   }
 
   unsubscribe(subscriber) {
-    // TODO
+    // TODO: #subscribers에서 subscriber 빼기
   }
 
   uploadVideo(title) {
     console.log(`[YouTube] 영상 업로드: ${title}`);
-    // TODO: 모든 구독자에게 알리기
+    // TODO: #notifyAll(title)로 모든 구독자에게 알리기
   }
 
   #notifyAll(title) {

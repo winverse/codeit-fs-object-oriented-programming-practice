@@ -7,7 +7,8 @@ class Warrior {
     attackPower,
     potionCount,
   }) {
-    // TODO
+    // TODO: 받은 다섯 값을 같은 이름의 프로퍼티에 저장하고,
+    // hp도 maxHp와 같은 값으로 설정
   }
 
   takeDamage(amount) {
@@ -15,13 +16,14 @@ class Warrior {
   }
 
   attack(target) {
-    // TODO: target에게 기본 공격
+    // TODO: target의 takeDamage를 호출해 attackPower만큼 피해 주기
   }
 
   powerStrike(target) {
     // TODO:
     // mp가 10 미만이면 false 반환
-    // 아니면 mp를 10 차감하고 기본 공격력의 2배 피해, true 반환
+    // 아니면 mp를 10 차감하고, target의 takeDamage를 호출해
+    // attackPower의 2배만큼 피해 주고 true 반환
   }
 
   usePotion() {
@@ -31,7 +33,7 @@ class Warrior {
   }
 
   getStatus() {
-    // TODO: "이름 | HP:현재/최대 MP:현재 Potion:개수" 형식
+    // TODO: "이름 | HP:현재/최대 MP:현재 Potion:개수" 형식의 문자열 반환
   }
 }
 
@@ -43,7 +45,8 @@ class Mage {
     attackPower,
     potionCount,
   }) {
-    // TODO
+    // TODO: 받은 다섯 값을 같은 이름의 프로퍼티에 저장하고,
+    // hp도 maxHp와 같은 값으로 설정
   }
 
   takeDamage(amount) {
@@ -51,7 +54,7 @@ class Mage {
   }
 
   attack(target) {
-    // TODO: target에게 기본 공격
+    // TODO: target의 takeDamage를 호출해 attackPower만큼 피해 주기
   }
 
   usePotion() {
@@ -63,11 +66,12 @@ class Mage {
   castFireball(target) {
     // TODO:
     // mp가 20 미만이면 false 반환
-    // 아니면 mp를 20 차감하고 target에게 40 피해, true 반환
+    // 아니면 mp를 20 차감하고, target의 takeDamage를 호출해
+    // 40만큼 피해 주고 true 반환
   }
 
   getStatus() {
-    // TODO: "이름 | HP:현재/최대 MP:현재 Potion:개수" 형식
+    // TODO: "이름 | HP:현재/최대 MP:현재 Potion:개수" 형식의 문자열 반환
   }
 }
 

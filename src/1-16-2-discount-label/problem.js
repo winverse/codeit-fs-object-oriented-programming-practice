@@ -1,11 +1,12 @@
 // src/1-16-2-discount-label/problem.js
 class Product {
   constructor(name, price) {
-    // TODO
+    // TODO: 받은 name과 price를 같은 이름의 프로퍼티에 저장
   }
 
   getPriceLabel(discountRate = 0) {
-    // TODO
+    // TODO: "재킷: 100000원" 형식의 문자열 반환
+    // 가격은 discountRate가 0이면 정가, 0보다 크면 할인 적용가
   }
 }
 

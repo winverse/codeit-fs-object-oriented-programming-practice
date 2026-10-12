@@ -1,6 +1,7 @@
 // src/4-04-student-responsibility/problem.js
-// TODO: Student가 맡은 일을 학생 정보(Student), 성적 관리(GradeBook),
-// 성적표 출력(ReportCardPrinter) 세 클래스로 나누기
+// TODO: Student에는 이름과 전공, getName(), getMajor()만 남기기
+// #grades와 addGrade(), getAverage()는 새 클래스 GradeBook으로 옮기고,
+// 성적표 출력은 새 클래스 ReportCardPrinter의 print(student, gradeBook)가 맡기
 class Student {
   #name;
   #major;
@@ -38,7 +39,8 @@ class Student {
   }
 }
 
-// TODO: 나눈 클래스로 성적을 기록하고 성적표를 출력하기
+// TODO: 성적은 GradeBook에 기록하고, 성적표는
+// ReportCardPrinter의 print(student, gradeBook)로 출력하도록 바꾸기
 const student = new Student("김코드", "컴퓨터공학과");
 student.addGrade(3.5);
 student.addGrade(4.5);

@@ -50,6 +50,7 @@ class SavingsAccount extends BankAccount {
 
   addInterest(rate) {
     // TODO: 잔액을 잔액 * (1 + rate * years)로 바꾸기
+    // 잔액은 getBalance()로 읽고 setBalance()로 바꾸기
   }
 }
 
@@ -60,6 +61,7 @@ class DonationAccount extends BankAccount {
 
   donate() {
     // TODO: 잔액을 잔액 * (1 - rate)로 바꾸기
+    // 잔액은 getBalance()로 읽고 setBalance()로 바꾸기
   }
 }
 

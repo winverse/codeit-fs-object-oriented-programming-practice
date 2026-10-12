@@ -1,11 +1,11 @@
 // src/1-13-cart-total/problem.js
 function Cart() {
-  // TODO: items 프로퍼티
+  // TODO: 상품 목록 this.items를 빈 배열로 두기
   this.addItem = function (item) {
-    // TODO
+    // TODO: 받은 item을 this.items에 추가
   };
   this.getTotalPrice = function () {
-    // TODO
+    // TODO: this.items에 담긴 상품 price의 합계 반환 (담긴 상품이 없으면 0)
   };
 }
 

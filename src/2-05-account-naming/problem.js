@@ -1,7 +1,7 @@
 // src/2-05-account-naming/problem.js
 // TODO: 각 프로퍼티와 메서드가 하는 일을 읽고
-// a, b, add, sub, move의 이름을 balance, deposit, holder, transfer, withdraw 가운데
-// 하는 일에 맞는 이름으로 바꾸기 (파일 끝의 호출부도 함께)
+// a, b, add, sub, move의 이름을 balance, deposit, holder, transfer, withdraw
+// 가운데 하는 일에 맞는 이름으로 바꾸기 (파일 끝의 호출부도 함께)
 class BankAccount {
   constructor(name, money) {
     this.a = name;

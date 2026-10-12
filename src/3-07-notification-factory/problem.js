@@ -13,7 +13,8 @@ class SmsNotification {
 
 class NotificationFactory {
   static create(channel) {
-    // TODO: channel에 맞는 알림 객체를 새로 만들어 반환하고, 등록되지 않은 채널이면 오류 던지기
+    // TODO: "email", "sms" 채널에 맞는 알림 객체를 새로 만들어 반환
+    // 등록되지 않은 채널이면 "지원하지 않는 채널입니다: 채널 이름" 오류 던지기
   }
 }
 

@@ -20,8 +20,8 @@ class LgPrinter {
   }
 }
 
-// TODO: 인쇄만 하는 printAll(printers, file)과
-// 스캔만 하는 scanAll(scanners, paper)로 나누기
+// TODO: runOffice()를 인쇄만 하는 printAll(printers, file)과
+// 스캔만 하는 scanAll(scanners, paper)로 나누고 runOffice()는 지우기
 function runOffice(machines, file, paper) {
   machines.forEach((machine) => {
     machine.print(file);

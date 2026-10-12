@@ -1,6 +1,6 @@
 // src/2-08-account-encapsulation/problem.js
-// TODO: balance를 private field #balance로 바꾸고,
-// constructor와 deposit, withdraw, transfer가 getBalance()와 setBalance()로 잔액을 읽고 바꾸게 하기
+// TODO: balance를 private field #balance로 바꾸고, constructor와 deposit,
+// withdraw, transfer가 getBalance()와 setBalance()로 잔액을 읽고 바꾸게 하기
 // transfer는 상대 계좌의 잔액을 상대 계좌의 deposit()으로 늘리기
 class BankAccount {
   constructor(name, money) {
@@ -9,11 +9,12 @@ class BankAccount {
   }
 
   getBalance() {
-    // TODO
+    // TODO: #balance에 저장한 잔액 반환
   }
 
   setBalance(money) {
-    // TODO: 0 이상이면 저장하고, 음수면 오류 던지기
+    // TODO: money가 0 이상이면 #balance에 저장하고, 음수면
+    // "You cannot set negative number for balance" 오류 던지기
   }
 
   deposit(money) {

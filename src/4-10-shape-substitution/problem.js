@@ -21,8 +21,8 @@ class Rectangle {
   }
 }
 
-// TODO: Rectangle을 상속하지 않는 클래스로 바꾸고,
-// 한 변의 길이를 private field #size에 담아 setSize(size)로 바꾸기
+// TODO: Rectangle을 상속하지 않는 클래스로 바꾸고, 한 변의 길이를
+// private field #size에 담아 setSize(size)와 getArea()만 두기
 class Square extends Rectangle {
   constructor(size) {
     super(size, size);

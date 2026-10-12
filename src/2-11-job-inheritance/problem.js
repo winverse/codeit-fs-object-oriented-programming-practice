@@ -41,7 +41,8 @@ class Rogue extends Character {
   shadowStrike(target) {
     // TODO:
     // mp가 10 미만이면 false 반환
-    // 아니면 mp를 10 차감하고 target에게 attackPower * 2 + 7 피해, true 반환
+    // 아니면 mp를 10 차감하고, target의 takeDamage를 호출해
+    // attackPower * 2 + 7만큼 피해 주고 true 반환
   }
 }
 
@@ -49,7 +50,8 @@ class Archer extends Character {
   piercingArrow(target) {
     // TODO:
     // mp가 12 미만이면 false 반환
-    // 아니면 mp를 12 차감하고 target에게 attackPower + 25 피해, true 반환
+    // 아니면 mp를 12 차감하고, target의 takeDamage를 호출해
+    // attackPower + 25만큼 피해 주고 true 반환
   }
 }
 

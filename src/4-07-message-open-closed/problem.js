@@ -54,7 +54,8 @@ class MessageNotificationManager {
     this.#messages.push(message);
   }
 
-  // TODO: 메시지 종류를 확인하지 않고 모든 메시지를 같은 메서드로 출력하기
+  // TODO: instanceof 분기를 없애고, 메시지 종류와 관계없이
+  // 모든 메시지에 getNotificationText()를 호출해 출력하기
   displayAll() {
     this.#messages.forEach((message) => {
       if (message instanceof KakaoMessage) {
